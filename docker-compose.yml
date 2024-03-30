@@ -1,0 +1,30 @@
+version : '3.7'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: Thanh@123456
+      ACCEPT_EULA: Y
+    ports:
+      - "1444:1433"
+    networks:
+      - demo-mynetwork
+
+  react-api:
+    build:
+      context: ./
+      dockerfile: APIReact\Dockerfile
+    ports:
+      - 4444:80
+    networks :
+      - demo-mynetwork
+    environment:
+      ASPNETCORE_ENVIRONMENT : Staging
+    depends_on:
+      - db
+
+   
+networks:
+  demo-mynetwork:
+    driver : bridge
