@@ -1,6 +1,6 @@
-﻿namespace APIReact.Entities
+﻿namespace APIReact.ViewModel.Employee
 {
-    public class EmployeeEntity
+    public class CustomerViewModel
     {
         public string CustomerId { get; set; }
         public string CompanyName { get; set; }
